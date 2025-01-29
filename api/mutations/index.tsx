@@ -1,4 +1,5 @@
 import { getItem } from "@/lib/helpers";
+import { Chat } from "@/types";
 import axios from "axios";
 type SignUpType = {
   email: string;
@@ -75,6 +76,7 @@ export const UploadDocuments = async (formData: FormData) => {
   return response.data;
 };
 
-export function  Chat(){
-  return apiInstance.post(`${process.env.EXPO_PUBLIC_API_URL}/chat`)
+
+export async function  StartChat(data:Chat){
+  return await apiInstance.post(`${process.env.EXPO_PUBLIC_API_URL}/chat`,data)
 }

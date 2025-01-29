@@ -5,16 +5,14 @@ import { Bot } from 'lucide-react-native';
 
 const MessageBubble = ({ message, isUser, isLoading = false }: { message: string; isUser: boolean; isLoading?: boolean }) => {
   return (
-    <View>
-      <View style={[styles.messageBubble, isUser ? styles.userBubble : styles.botBubble]}>
-        {!isUser && <View style={styles.botIconContainer}><Bot size={20} color="white" /></View>}
-        
-        {!isUser && isLoading ? (
-          <LoadingDots />
-        ) : (
-          <Text style={styles.messageText}>{message}</Text>
-        )}
-      </View>
+    <View style={[styles.messageBubble, isUser ? styles.userBubble : styles.botBubble]}>
+      {!isUser && <View style={styles.botIconContainer}><Bot size={20} color="white" /></View>}
+
+      {!isUser && isLoading ? (
+        <LoadingDots />
+      ) : (
+        <Text style={styles.messageText}>{message}</Text>
+      )}
     </View>
   );
 };
@@ -50,22 +48,22 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     marginVertical: 5,
     marginBottom: 20,
+    flexDirection: 'row', // Ensure horizontal alignment for icon and text
   },
   userBubble: {
     backgroundColor: Colors.custom.accent_1,
     alignSelf: 'flex-end',
   },
   botBubble: {
-   // backgroundColor: Colors.custom.background_2,
-    flexDirection: 'row',
     alignSelf: 'flex-start',
-    alignItems: 'center',
+    alignItems: 'flex-start',
   },
   botIconContainer: {
     backgroundColor: Colors.custom.accent_3,
     borderRadius: 15,
     padding: 5,
     marginRight: 10,
+    alignSelf: 'flex-start',
   },
   messageText: {
     color: 'white',
@@ -86,5 +84,6 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
   },
 });
+
 
 export default MessageBubble;

@@ -1,7 +1,9 @@
-export type Chat = {
+export type ChatHistory = {
     id: string;
-    message: string;
-    type: "user" | "ai";
+  
+  question  : string;
+  answer:string
+
   };
 
 
@@ -9,3 +11,7 @@ export type Chat = {
     message: string;
     isUser: boolean;
   };
+
+  export type Chat={
+    question:string
+  }
